@@ -2,10 +2,22 @@
 <html>
   <head>
     <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/libraries/require.min.js" data-main="/javascripts/cc.main.client.js"></script>
   </head>
   <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <div class="container">
+      <h1>{{ title }}</h1>
+      <p>Welcome to {{ title }}</p>
+
+      <ul data-bind="foreach:projects">
+      	<li><span data-bind="text:name"></span></li>
+      </ul>
+
+      <div data-bind="carousel: { content: { data: projects } }"></div>
+
+    </div>
+
   </body>
 </html>
