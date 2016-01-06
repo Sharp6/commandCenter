@@ -9,15 +9,49 @@
   <body>
     <div class="container">
       <h1>{{ title }}</h1>
-      <p>Welcome to {{ title }}</p>
 
+      
+
+      <div id="appCarousel" data-bind="carousel: { options: { interval: false },  content: { name: 'slideTemplate', data: projects } }"></div>
+
+      <div data-bind="with:currentProject">
+        sdfsdf
+        <span data-bind="text:name"></span>
+      </div>
+
+      <script type="text/html" id="slideTemplate">
+        <h2 data-bind="text:name"></h2>
+        <div data-bind="foreach:deploys">
+          <span data-bind="text:url"></span>:<span data-bind="text:port"></span>(<span data-bind="text:type"></span>)
+        </div>
+        <div class="labels">
+          <span data-bind="foreach:languages">
+            <span class="label label-primary" data-bind="text:$data"></span>
+          </span>
+          <span data-bind="foreach:frameworks">
+            <span class="label label-default" data-bind="text:$data"></span>
+          </span>
+          <span data-bind="foreach:hardware">
+            <span class="label label-info" data-bind="text:$data"></span>
+          </span>
+
+        </div>
+      </script>
+
+      <!--
       <ul data-bind="foreach:projects">
-      	<li><span data-bind="text:name"></span></li>
+        <li>
+          <span data-bind="text:name"></span>
+          <ul data-bind="foreach:deploys">
+            <li data-bind="text:url"></li>
+          </ul>
+        </li>
       </ul>
-
-      <div data-bind="carousel: { content: { data: projects } }"></div>
+      //-->
 
     </div>
+
+
 
   </body>
 </html>

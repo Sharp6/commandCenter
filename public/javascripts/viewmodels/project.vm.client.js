@@ -3,6 +3,7 @@ define(['knockout', 'da/project.da.client', 'models/project.model.client'], func
 		var self = this;
 
 		self.projects = ko.observableArray();
+		self.currentProject = ko.observable();
 
 		self.loadProjects = function() {
 			projectDA.loadProjects()
@@ -11,6 +12,11 @@ define(['knockout', 'da/project.da.client', 'models/project.model.client'], func
 						self.projects.push(new Project(project));
 					});
 				});
+		}
+
+		self.showDetails = function(selectedProject) {
+			console.log("Boo");
+			self.currentProject(selectedProject);
 		}
 
 		self.init = function() {

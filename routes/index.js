@@ -5,7 +5,7 @@ var projectRoutes = function(projectCtrl) {
 
 	/* GET home page. */
 	router.get('/', function(req, res) {
-	  res.render('index', { title: 'Express' });
+	  res.render('index', { title: '2Root apps' });
 	});
 
 	/* API */
@@ -13,8 +13,6 @@ var projectRoutes = function(projectCtrl) {
 		.get(function(req,res) {
 			return projectCtrl.getProjects(req,res);
 		});
-
-	module.exports = router;
 
 	return router;
 }

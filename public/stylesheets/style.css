@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+#appCarousel {
+	width: 900px;
+	margin: 0 auto;
+}
