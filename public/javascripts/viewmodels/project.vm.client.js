@@ -21,6 +21,7 @@ define(['knockout', 'da/project.da.client', 'models/project.model.client'], func
 
 		self.init = function() {
 			self.loadProjects();
+			self.projects.sort();
 		}
 	}
 
