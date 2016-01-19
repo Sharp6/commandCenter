@@ -21,7 +21,9 @@ define(['knockout', 'da/project.da.client', 'models/project.model.client'], func
 
 		self.init = function() {
 			self.loadProjects();
-			self.projects.sort();
+			self.projects.sort(function(a,b) {
+				return a.name == b.name ? 0 : (a.name < b.name ? -1 : 1);
+			});
 		}
 	}
 
