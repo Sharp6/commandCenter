@@ -6,7 +6,7 @@ define(['knockout', 'da/project.da.client', 'models/project.model.client'], func
 		self.currentProject = ko.observable();
 
 		self.loadProjects = function() {
-			projectDA.loadProjects()
+			return projectDA.loadProjects()
 				.then(function(projectData) {
 					projectData.forEach(function(project) {
 						self.projects.push(new Project(project));
@@ -20,12 +20,15 @@ define(['knockout', 'da/project.da.client', 'models/project.model.client'], func
 		}
 
 		self.init = function() {
-			self.loadProjects();
-			self.projects(self.projects.sort(function(a,b) {
-				return a.name == b.name ? 0 : (a.name < b.name ? -1 : 1);
-			}));
-		}
+			self.loadProjects()
+				.then(function() {
+					self.projects.sort(function(a,b) {
+						return a.name().toLowerCase() == b.name().toLowerCase() ? 0 : (a.name().toLowerCase() < b.name().toLowerCase() ? -1 : 1);
+					});
+				});
+		}	
 	}
 
 	return vm;
+	
 });
