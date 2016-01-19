@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 if(app.get('env') === "development") {
-  require('dotenv').load();
+  require('dotenv').load({ path: '/home/pi/apps/commandCenter/.env'});
   console.log("Loading dotEnv.");
 }
 
